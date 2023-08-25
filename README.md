@@ -1,2 +1,3 @@
 # web_server
-Serves websites based on the hostname
+
+Serves websites based on the hostname.
