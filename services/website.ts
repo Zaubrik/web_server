@@ -16,7 +16,7 @@ export function getHost(result: URLPatternResult) {
     const topLevelDomain = getGroup(result, "hostname", "topLevelDomain");
     const subdomain = result.hostname.groups.subdomain;
     return `${
-      subdomain ? `${subdomain}.` : ""
+      subdomain ? subdomain === "www" ? "" : `${subdomain}.` : ""
     }${secondLevelDomain}.${topLevelDomain}`;
   }
 }
