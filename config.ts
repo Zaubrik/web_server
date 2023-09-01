@@ -1,8 +1,14 @@
 import { assertEnv } from "./deps.ts";
 
-export const isProduction = false;
+export const isProduction = true;
+const port = isProduction ? 8083 : 8083;
+// const https = "https:";
+// const http = "http:";
+// const protocol = isProduction ? https : http;
+const domain = isProduction ? "zaubrik.de" : "localhost";
+const subdomain = "members";
+export const hostname = `${subdomain}.${domain}`;
 export const [home] = isProduction ? assertEnv(["HOME"]) : [""];
-const port = isProduction ? 8088 : 8088;
 export const serveOptions = isProduction
   ? {
     port,
@@ -18,4 +24,9 @@ export const urlPatternHostnameProduction =
 export const urlPatternHostname = isProduction
   ? urlPatternHostnameProduction
   : urlPatternHostnameDevelopment;
-export const nginxConfigUrl = new URL("file:///etc/nginx/sites-available/");
+export const nginxConfigSitesAvailable = new URL(
+  "file:///etc/nginx/sites-available/",
+);
+export const nginxConfigSitesEnabled = new URL(
+  "file:///etc/nginx/sites-enabled/",
+);

@@ -1,7 +1,7 @@
-import { createGetRoute, createPostRoute } from "./deps.ts";
+import { createDeleteRoute, createGetRoute, createPostRoute } from "./deps.ts";
 import { urlPatternHostname } from "./config.ts";
 import { serveWebsite } from "./services/website.ts";
-import { addDomain } from "./services/domain.ts";
+import { addDomain, deleteDomain } from "./services/domain.ts";
 
 const serveFilePattern = {
   hostname: urlPatternHostname,
@@ -11,10 +11,13 @@ export const staticFilesRoute = createGetRoute(serveFilePattern)(
   serveWebsite("./static"),
 );
 
-const addDomainPattern = {
+const domainPattern = {
   hostname: "*",
   pathname: "/domain",
 };
-export const addDomainRoute = createPostRoute(addDomainPattern)(
+export const addDomainRoute = createPostRoute(domainPattern)(
   addDomain,
+);
+export const deleteDomainRoute = createDeleteRoute(domainPattern)(
+  deleteDomain,
 );

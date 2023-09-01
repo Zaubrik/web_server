@@ -1,5 +1,6 @@
 export {
   Context,
+  createDeleteRoute,
   createGetRoute,
   createHandler,
   createPostRoute,
@@ -12,6 +13,6 @@ export {
   logger,
   serveStatic,
   spawnSubprocess,
-} from "https://dev.zaubrik.com/portal@v0.2.3/mod.ts";
+} from "https://dev.zaubrik.com/portal@v0.2.4/mod.ts";
 
 export { isString } from "https://dev.zaubrik.com/sorcery@v0.1.4/type.js";
